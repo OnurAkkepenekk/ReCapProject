@@ -1,10 +1,10 @@
-﻿using Entities.Abstract;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace DataAccess.Abstract
+namespace Core.DataAccess
 {
     // Generic Constraint 
     // class : referans tip olabilir anlamındadır.
@@ -20,7 +20,5 @@ namespace DataAccess.Abstract
         void Add(T entity);
         void Delete(T entity);
         void Update(T entity);
-
-
     }
 }
