@@ -13,9 +13,9 @@ namespace Business.Concrete
     {
         IColorDal _colorDal;
 
-        public ColorManager(IColorDal efColorDal)
+        public ColorManager(IColorDal colorDal)
         {
-            _colorDal = efColorDal;
+            _colorDal = colorDal;
         }
 
         public IResult Add(Color color)
