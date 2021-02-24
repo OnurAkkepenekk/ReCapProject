@@ -18,7 +18,8 @@ namespace ConsoleUI
                 Console.WriteLine("Delete (2)");
                 Console.WriteLine("Update (3)");
                 Console.WriteLine("Exit (4)");
-
+                Console.WriteLine("Add Customer (5)");
+                Console.WriteLine("Add Rental (7)");
                 string menu = Console.ReadLine();
 
                 switch (menu)
@@ -40,7 +41,13 @@ namespace ConsoleUI
                         break;
 
                     case "5":
+                        CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+                        customerManager.Add(new Customer() { Id = 1, UserId = 1, CompanyName = "onur" });
+                        break;
+                    case "6":
                         CarDetails();
+                        break;
+                    case "7":                
                         break;
                 }
             }
