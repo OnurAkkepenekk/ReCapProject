@@ -49,9 +49,10 @@ namespace ConsoleUI
         private static void CarDetails()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var item in carManager.GetCarDetailDtos())
+            foreach (var item in carManager.GetCarDetailDtos().Data)
             {
-                Console.WriteLine(item.CarName + "--->" + item.BrandName + "--->" + item.ColorName + "--->" + item.DailyPrice);
+                if (carManager.GetCarDetailDtos().Success == true)
+                    Console.WriteLine(item.CarName + "--->" + item.BrandName + "--->" + item.ColorName + "--->" + item.DailyPrice);
             }
         }
         private static void EntityFrameworkAddTest()
@@ -78,16 +79,16 @@ namespace ConsoleUI
                  Console.WriteLine(c.ColorId + " " + c.ColorName);
              }*/
 
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-            foreach (Brand c in brandManager.GetAll())
-            {
-                Console.WriteLine(c.BrandId + " " + c.BrandName);
-            }
-            brandManager.Add(new Brand { BrandName = "Onur" });
-            foreach (Brand c in brandManager.GetAll())
-            {
-                Console.WriteLine(c.BrandId + " " + c.BrandName);
-            }
+            /* BrandManager brandManager = new BrandManager(new EfBrandDal());
+             foreach (Brand c in brandManager.GetAll())
+             {
+                 Console.WriteLine(c.BrandId + " " + c.BrandName);
+             }
+             brandManager.Add(new Brand { BrandName = "Onur" });
+             foreach (Brand c in brandManager.GetAll())
+             {
+                 Console.WriteLine(c.BrandId + " " + c.BrandName);
+             }*/
 
         }
         private static void EntityFrameworkDeleteTest()
@@ -102,14 +103,14 @@ namespace ConsoleUI
             {
                 Console.WriteLine(c.CarId + " " + c.Descriptions + " Daily Price is: " + c.DailyPrice + "$");
             }
-            */
+            
             ColorManager colorManager = new ColorManager(new EfColorDal());
-            foreach (Color c in colorManager.GetAll())
+            foreach (Color c in colorManager.GetAll().Data)
             {
                 Console.WriteLine(c.ColorId + " " + c.ColorName);
             }
             colorManager.Delete(new Color { ColorId = 4 });
-            foreach (Color c in colorManager.GetAll())
+            foreach (Color c in colorManager.GetAll().Data)
             {
                 Console.WriteLine(c.ColorId + " " + c.ColorName);
             }
@@ -123,11 +124,11 @@ namespace ConsoleUI
             foreach (Brand c in brandManager.GetAll())
             {
                 Console.WriteLine(c.BrandId + " " + c.BrandName);
-            }
+            }*/
         }
         private static void EntityFrameworkUpdateTest()
         {
-            CarManager carManager = new CarManager(new EfCarDal());
+            /*CarManager carManager = new CarManager(new EfCarDal());
             foreach (Car c in carManager.GetAll())
             {
                 Console.WriteLine(c.CarId + " " + c.Descriptions + " Daily Price is: " + c.DailyPrice + "$");
@@ -136,7 +137,7 @@ namespace ConsoleUI
             foreach (Car c in carManager.GetAll())
             {
                 Console.WriteLine(c.CarId + " " + c.Descriptions + " Daily Price is: " + c.DailyPrice + "$");
-            }
+            }*/
         }
     }
 }
