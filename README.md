@@ -1,10 +1,5 @@
 # ReCapProject 
-<div align="center">
-  <sub>This repo built with ❤︎ by
-    <a href="https://github.com/OnurAkkepenekk">OnurAkkepenek
-    </a>
-  </sub>
-</div>
+
 <br /> 
 
 
@@ -26,3 +21,9 @@ N-Katmanlı mimari yapısı ile tasarlanan Araç Kiralama projesi; Entities, Bus
 
 
 <div align="center"> This repo have builded during Software Developer Camp. |kodlama.io by Engin Demirog</div> 
+<div align="center">
+  <sub>This repo built with ❤︎ by
+    <a href="https://github.com/OnurAkkepenekk">OnurAkkepenek
+    </a>
+  </sub>
+</div>
