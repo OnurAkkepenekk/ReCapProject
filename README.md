@@ -1,13 +1,10 @@
-# ReCapProject
-<h1 align="center"> ReCapProject   :car: </h1>
-
+#ReCapProject 
 <div align="center">
   <sub>This repo built with ❤︎ by
     <a href="https://github.com/OnurAkkepenekk">OnurAkkepenek
     </a>
   </sub>
 </div>
-
 <br /> 
 
 
