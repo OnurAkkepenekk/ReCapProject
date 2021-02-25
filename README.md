@@ -1,9 +1,6 @@
 # ReCapProject
 <h1 align="center"> ReCapProject   :car: </h1>
 
- 
-<div align="center"> This repo have builded during Software Developer Camp. |kodlama.io by Engin Demirog :star: <br> </div> 
-
 <div align="center">
   <sub>This repo built with ❤︎ by
     <a href="https://github.com/OnurAkkepenekk">OnurAkkepenek
@@ -29,3 +26,6 @@ N-Katmanlı mimari yapısı ile tasarlanan Araç Kiralama projesi; Entities, Bus
 <h2 >  :round_pushpin: DataAccess Layer <br> </h2> <br> 
 
 <h2 >  :round_pushpin: Web API <br> </h2> <br> 
+
+
+<div align="center"> This repo have builded during Software Developer Camp. |kodlama.io by Engin Demirog</div> 
