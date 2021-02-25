@@ -8,6 +8,7 @@ Create Table Users(
 	CONSTRAINT PK_Users PRIMARY KEY (Id) 
 )
 Create Table Customers(
+	Id int Not Null IDENTITY(1, 1),
 	UserId int Not NULL,
 	CompanyName varchar(32)
 	CONSTRAINT PK_Customers PRIMARY KEY (UserId) 
