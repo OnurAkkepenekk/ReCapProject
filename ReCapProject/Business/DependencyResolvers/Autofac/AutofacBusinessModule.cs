@@ -1,6 +1,8 @@
 ﻿using Autofac;
+using Autofac.Extras.DynamicProxy;
 using Business.Abstract;
 using Business.Concrete;
+using Castle.DynamicProxy;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramewotk;
 using System;
@@ -29,7 +31,7 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfRentalDal>().As<IRentalDal>().SingleInstance();
 
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
-            builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance(); 
+            builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
         }
     }
 }
