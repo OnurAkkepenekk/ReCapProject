@@ -1,5 +1,9 @@
 
 <h1 align="center">ReCap Project : Araba Kiralama Sistemi</h1> 
-![CarRental](https://user-images.githubusercontent.com/61885344/109552286-a129c980-7ae2-11eb-9fad-f20423a6e862.png)
+
+
+![CarRental](https://user-images.githubusercontent.com/61885344/109553185-c834cb00-7ae3-11eb-91a4-d539a2248509.png)
+
+
 <h2>:star:Introduction</h2>
 
