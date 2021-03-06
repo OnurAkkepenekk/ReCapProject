@@ -36,5 +36,8 @@ namespace Business.Constants
         public static string CustomerList = "Müşteri Listesi";
         public static string RentalDeleted;
         public static string RentalUpdated;
+        internal static string CarImageAdded = "Araba resmi yüklendi.";
+        internal static string ListCarImage = "Resim listesi";
+        internal static string CarImageLimitExceeded = "En fazla 5 resim upload edebilirsin.";
     }
 }
