@@ -42,7 +42,7 @@ namespace ConsoleUI
 
                     case "5":
                         CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-                        customerManager.Add(new Customer() { Id = 1, UserId = 1, CompanyName = "onur" });
+                        customerManager.Add(new Customer() { CustomerId = 1, UserId = 1, CompanyName = "onur" });
                         break;
                     case "6":
                         CarDetails();
