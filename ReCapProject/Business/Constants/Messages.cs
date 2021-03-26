@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Entities.Concrete;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
@@ -37,9 +38,16 @@ namespace Business.Constants
         public static string CustomerList = "Müşteri Listesi";
         public static string RentalDeleted;
         public static string RentalUpdated;
-        internal static string CarImageAdded = "Araba resmi yüklendi.";
-        internal static string ListCarImage = "Resim listesi";
-        internal static string CarImageLimitExceeded = "En fazla 5 resim upload edebilirsin.";
-        internal static SerializationInfo AuthorizationDenied;
+        public static string CarImageAdded = "Araba resmi yüklendi.";
+        public static string ListCarImage = "Resim listesi";
+        public static string CarImageLimitExceeded = "En fazla 5 resim upload edebilirsin.";
+        public static string AuthorizationDenied = "Yetkiniz yok";
+        internal static string UserRegistered;
+        internal static User PasswordError;
+        internal static string SuccessfulLogin;
+        internal static string UserAlreadyExists;
+        internal static string AccessTokenCreated;
+
+        public static User UserNotFound { get; internal set; }
     }
 }

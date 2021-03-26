@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Entities.Concrete;
+using Entities.Concrete;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,9 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(u => u.LastName).MinimumLength(2);
             RuleFor(u => u.Email).NotEmpty();
             RuleFor(u => u.Email).EmailAddress();
-            RuleFor(u => u.Password).NotEmpty();
-            RuleFor(u => u.Password).MinimumLength(12);
-            RuleFor(u => u.Password).Must(ValidatePassword);
         }
 
-        private bool ValidatePassword(string arg)
+        /*private bool ValidatePassword(string arg)
         {
             bool upper = false;
             bool lower = false;
@@ -38,6 +36,6 @@ namespace Business.ValidationRules.FluentValidation
             }
             bool validate = upper && lower && num;
             return validate;
-        }
+        }*/
     }
 }
