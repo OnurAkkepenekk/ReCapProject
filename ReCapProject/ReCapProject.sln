@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleUI", "ConsoleUI\Cons
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{EA3FECA9-9A61-41C7-81D8-88FF0356418D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{EC9B6420-BAA1-4C72-8913-96026CC5957F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{EC9B6420-BAA1-4C72-8913-96026CC5957F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,11 +22,9 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{6AE6ADDC-F3AA-482A-B229-5A1FBB926C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6AE6ADDC-F3AA-482A-B229-5A1FBB926C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AE6ADDC-F3AA-482A-B229-5A1FBB926C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AE6ADDC-F3AA-482A-B229-5A1FBB926C34}.Release|Any CPU.Build.0 = Release|Any CPU
 		{137F415F-0A70-4F91-9B1D-49D212738C06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{137F415F-0A70-4F91-9B1D-49D212738C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{137F415F-0A70-4F91-9B1D-49D212738C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{137F415F-0A70-4F91-9B1D-49D212738C06}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EA820294-F24E-42B0-AD54-E839F19E2DB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -38,11 +36,9 @@ Global
 		{8FB445CF-9D75-49D2-B306-BEE05EA9BBAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FB445CF-9D75-49D2-B306-BEE05EA9BBAA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EA3FECA9-9A61-41C7-81D8-88FF0356418D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA3FECA9-9A61-41C7-81D8-88FF0356418D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA3FECA9-9A61-41C7-81D8-88FF0356418D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA3FECA9-9A61-41C7-81D8-88FF0356418D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EC9B6420-BAA1-4C72-8913-96026CC5957F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC9B6420-BAA1-4C72-8913-96026CC5957F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC9B6420-BAA1-4C72-8913-96026CC5957F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC9B6420-BAA1-4C72-8913-96026CC5957F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
