@@ -12,7 +12,7 @@ namespace DataAccess.Concrete.EntityFramewotk
         // Hangi veritabanı
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; Database=ReCapProject; Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; Database=CarRental; Trusted_Connection=true");
 
         }
         // Hangi tablo nereye karşılık gelicek
