@@ -56,6 +56,7 @@ namespace WebAPI
              services.AddSingleton<IUserService, UserManager>();
              services.AddSingleton<IUserDal, EfUserDal>();*/
 
+            services.AddCors();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // JWT kullanýlacak diyoruz.
@@ -87,6 +88,7 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

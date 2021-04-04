@@ -30,7 +30,6 @@ namespace DataAccess.Concrete.EntityFramewotk
                                  BrandName = b.BrandName,
                                  ColorName = color.ColorName,
                                  DailyPrice = c.DailyPrice
-
                              };
 
                 return result.ToList();
