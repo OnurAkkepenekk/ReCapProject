@@ -43,14 +43,14 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarListed);
         }
         [CacheAspect]
-        public IDataResult<List<Car>> GetAllByBrandId(int id)
+        public IDataResult<List<Car>> GetAllByBrandId(int brandId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.BrandId == id));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.BrandId == brandId));
         }
         [CacheAspect]
-        public IDataResult<List<Car>> GetAllByColorId(int id)
+        public IDataResult<List<Car>> GetAllByColorId(int colorId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ColorId == id));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ColorId == colorId));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetailDtos()

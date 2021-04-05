@@ -29,10 +29,10 @@ namespace WebAPI.Controllers
             else
                 return BadRequest(result);
         }
-        [HttpGet("GetById")]
-        public IActionResult GetById(int id)
+        [HttpGet("GetByBrandId")]
+        public IActionResult GetByBrandId(int brandId)
         {
-            var result = _brandService.GetById(id);
+            var result = _brandService.GetById(brandId);
             if (result.Success)
                 return Ok(result);
             else
