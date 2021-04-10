@@ -26,12 +26,37 @@ namespace DataAccess.Concrete.EntityFramewotk
 
                              select new CarDetailDto
                              {
-                                 CarName = c.CarId,
+                                 CarId = c.CarId,
+                                 CarName = c.CarName,
                                  BrandName = b.BrandName,
                                  ColorName = color.ColorName,
                                  DailyPrice = c.DailyPrice
                              };
 
+                return result.ToList();
+            }
+        }
+
+        public List<CarDetailDto> GetCarDetailsByColorAndBrand(int brandId, int colorId)
+        {
+            using (ReCapProjectDatabaseContext context = new ReCapProjectDatabaseContext())
+            {
+                var result = from c in context.Cars
+                             join b in context.Brands
+                             on c.BrandId equals b.BrandId
+                             join color in context.Colors
+                             on c.ColorId equals color.ColorId
+                             where c.ColorId == colorId && c.BrandId == brandId
+
+                             select new CarDetailDto
+                             {
+                                 CarId = c.CarId,
+                                 BrandName = b.BrandName,
+                                 ColorName = color.ColorName,
+                                 DailyPrice = c.DailyPrice,
+                                 Description = c.Descriptions,
+                                 ImagePath = (from a in context.CarImages where a.CarId == c.CarId select a.ImagePath).FirstOrDefault()
+                             };
                 return result.ToList();
             }
         }

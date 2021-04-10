@@ -63,6 +63,13 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
+ 
+
+        public List<CarDetailDto> GetCarDetailsByColorAndBrand(int brandId, int colorId)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Car car)
         {
             var carToUpdate = _cars.SingleOrDefault(c => c.CarId == car.CarId);
