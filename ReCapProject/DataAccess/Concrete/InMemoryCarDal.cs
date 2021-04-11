@@ -53,6 +53,11 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
+        public List<CarWithBrandAndColorDto> GetAllWithDetail(Expression<Func<CarWithBrandAndColorDto, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
         public Car GetById(int carID)
         {
             return (_cars.SingleOrDefault(c => c.CarId == carID));
@@ -63,7 +68,10 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
- 
+        public CarDetailDto GetCarDetailsByCarId(int carId)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<CarDetailDto> GetCarDetailsByColorAndBrand(int brandId, int colorId)
         {
@@ -77,6 +85,11 @@ namespace DataAccess.Concrete
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.DailyPrice = car.DailyPrice;
             carToUpdate.Descriptions = car.Descriptions;
+        }
+
+        List<CarDetailDto> ICarDal.GetCarDetailsByCarId(int carId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

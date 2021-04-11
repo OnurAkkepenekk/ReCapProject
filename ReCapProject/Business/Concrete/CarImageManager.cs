@@ -1,7 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Core.Utilities.BusinessRule;
-using Core.Utilities.FileHelper;
+using Core.Utilities.Helpers;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -25,26 +25,21 @@ namespace Business.Concrete
 
         public IResult Add(IFormFile file, CarImage carImage)
         {
-            IResult result = BusinessRules.Run(CheckImageCount(carImage.CarId));
-            if (result == null)
-            {
-                var fileUpload = FileHelper.Add(file);
-                if (fileUpload.Success)
-                {
-                    carImage.ImagePath = fileUpload.Data;
-                    _carImage.Add(carImage);
-                }
-                return new SuccessDataResult<CarImage>(Messages.CarImageAdded);
-            }
-            else
+            var fileUpload = FileHelper.AddAsync(file);
+            IResult result = BusinessRules.Run(CheckImageCount(carImage.CarId), fileUpload);
+            if (result != null)
             {
                 return result;
             }
+            carImage.ImagePath = fileUpload.Data;
+            carImage.Date = DateTime.Now;
+            _carImage.Add(carImage);
+            return new SuccessResult(Messages.CarImageAdded);
         }
 
         public IResult Delete(CarImage carImage)
         {
-            FileHelper.Delete(carImage.ImagePath);
+            FileHelper.DeleteAsync(carImage.ImagePath);
             _carImage.Delete(carImage);
             return new SuccessResult("Silinme işlemi yapıldı");
         }
@@ -77,18 +72,21 @@ namespace Business.Concrete
 
         public IResult Update(IFormFile file, CarImage carImage)
         {
-            var fileUpload = FileHelper.Update(file, carImage.ImagePath);
-            // Database güncellemesi
-            if (fileUpload.Success)
+            var fileUpload = FileHelper.UpdateAsync(_carImage.Get(ci => ci.Id == carImage.Id).ImagePath, file);
+            var result = BusinessRules.Run(fileUpload);
+            if (result != null)
             {
-                carImage.ImagePath = fileUpload.Data;
-                _carImage.Update(carImage);
-                return new SuccessDataResult<CarImage>(Messages.CarImageAdded);
+                return result;
             }
-            else
+            CarImage carImagetoUpdate = _carImage.Get(ci => ci.Id == carImage.Id);
+            if (carImagetoUpdate == null)
             {
                 return new ErrorResult();
             }
+            carImagetoUpdate.ImagePath = fileUpload.Data;
+            carImagetoUpdate.Date = DateTime.Now;
+            _carImage.Update(carImagetoUpdate);
+            return new SuccessResult(Messages.CarImageUpdated);
         }
 
         private IResult CheckImageCount(int id)
@@ -103,7 +101,7 @@ namespace Business.Concrete
 
         private IDataResult<List<CarImage>> CheckIfCarImageNull(int id)
         {
-            string path = @"\wwwroot\Images\logo.jpg";
+            string path = @"\Images\logo.jpg";
             var result = _carImage.GetAll(c => c.CarId == id);
             if (result.Count == 0)
             {

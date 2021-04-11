@@ -5,40 +5,50 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Core.Utilities.FileHelper
+namespace Core.Utilities.Helpers
 {
     public class FileHelper
     {
-        // C:\\ ... \Images path'ini olusturuyor
-        static string path = Environment.CurrentDirectory + @"\wwwroot\Images";
-
-        public static IDataResult<string> Add(IFormFile file)
+        static string path = System.IO.Directory.GetCurrentDirectory() + @"\wwwroot\Images";
+        public static IDataResult<String> AddAsync(IFormFile file)
         {
-            var result = newFilePath(file);
-            try
+            if (file.Length > 0)
             {
-                var sourcePath = Path.GetTempFileName();
-                if (file.Length > 0)
+                string filePath = NewPath(file).newPath;
+                string imagePath = NewPath(file).Path2;
+                string fullPath = filePath + "\\" + imagePath;
+                imagePath = "\\Images\\" + imagePath;
+                using (FileStream fileStream = System.IO.File.Create(fullPath))
                 {
-                    using (var stream = new FileStream(sourcePath, FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
-                    File.Move(sourcePath, result);
-                    return new SuccessDataResult<string>(result, "Dosya eklendi.");
+                    file.CopyTo(fileStream);
+                    fileStream.Flush();
                 }
-                else
-                {
-                    return new ErrorDataResult<string>("Dosya eklenemedi.");
-                }
+                return new SuccessDataResult<String>(imagePath, "File Added.");
             }
-            catch (Exception ex)
-            {
-                return new ErrorDataResult<string>(ex.Message);
-            }
+            return new ErrorDataResult<String>();
         }
 
-        public static IResult Delete(string path)
+        public static IDataResult<String> UpdateAsync(string oldfilepath, IFormFile newfile)
+        {
+            if (File.Exists(oldfilepath))
+            {
+                FileHelper.DeleteAsync(oldfilepath);
+                string filePath = NewPath(newfile).newPath;
+                string imagePath = NewPath(newfile).Path2;
+                string fullPath = filePath + "\\" + imagePath;
+                imagePath = "\\Images\\" + imagePath;
+                using (FileStream fileStream = System.IO.File.Create(fullPath))
+                {
+                    newfile.CopyTo(fileStream);
+                    fileStream.Flush();
+                }
+                return new SuccessDataResult<String>(imagePath, "File Added");
+            }
+            return new ErrorDataResult<String>("File Doesn't Exists");
+
+        }
+
+        public static IResult DeleteAsync(string path)
         {
             try
             {
@@ -51,40 +61,22 @@ namespace Core.Utilities.FileHelper
 
             return new SuccessResult();
         }
-        public static IDataResult<string> Update(IFormFile file, string oldFilePath)
+        public static (string newPath, string Path2) NewPath(IFormFile file)
         {
-            try
-            {
-                if (File.Exists(oldFilePath))
-                {
-                    FileHelper.Delete(oldFilePath);
-                    var result = newFilePath(file);
+            FileInfo ff = new FileInfo(file.FileName);
+            string fileExtension = ff.Extension;
 
-                    var sourcePath = Path.GetTempFileName();
+            var creatingUniqueFilename = Guid.NewGuid().ToString("N")
+               + "_" + DateTime.Now.Month + "_"
+               + DateTime.Now.Day + "_"
+               + DateTime.Now.Year + fileExtension;
 
-                    using (var stream = new FileStream(sourcePath, FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
-                    File.Move(sourcePath, result);
-                    return new SuccessDataResult<string>(result, "Dosya eklendi.");
-                }
-                else
-                {
-                    return new ErrorDataResult<string>("Dosya Bulunamadı.");
-                }
-            }
-            catch (Exception exception)
-            {
-                return new ErrorDataResult<string>(exception.Message);
-            }
-        }
-        private static string newFilePath(IFormFile file)
-        {
-            //GUID li dosya ismini oluşturur
-            var newGuidPath = Guid.NewGuid().ToString("N") + Path.GetExtension(path + file.FileName);
-            string result = $@"{path}\{newGuidPath}";
-            return result;
+
+            string path = Environment.CurrentDirectory + @"\wwwroot\Images";
+
+            string result = $@"{path}\{creatingUniqueFilename}";
+
+            return (path, $"{creatingUniqueFilename}");
         }
     }
 }
