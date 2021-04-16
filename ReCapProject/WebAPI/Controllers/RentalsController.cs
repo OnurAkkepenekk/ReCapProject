@@ -67,5 +67,26 @@ namespace WebAPI.Controllers
             else
                 return BadRequest(result);
         }
+
+        [HttpGet("checkavailability")]
+        public IActionResult CheckAvailability(DateTime rentDate, int carId)
+        {
+            var result = _rentalService.CheckAvailability(rentDate, carId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("rentaldetails")]
+        public IActionResult RentalDetails()
+        {
+            var result = _rentalService.RentalDetails();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

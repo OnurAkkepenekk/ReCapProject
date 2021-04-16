@@ -48,6 +48,7 @@ namespace Business.Constants
         internal static string UserAlreadyExists;
         internal static string AccessTokenCreated;
         internal static string CarImageUpdated;
+        internal static string RentalDetails;
 
         public static User UserNotFound { get; internal set; }
     }

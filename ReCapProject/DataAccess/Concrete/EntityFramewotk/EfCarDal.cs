@@ -19,19 +19,19 @@ namespace DataAccess.Concrete.EntityFramewotk
             using (ReCapProjectDatabaseContext context = new ReCapProjectDatabaseContext())
             {
                 var result = from c in context.Cars
-                             join b in context.Brands on c.BrandId equals b.BrandId
-                             join color in context.Colors on c.ColorId equals color.ColorId
-
+                             join b in context.Brands
+                             on c.BrandId equals b.BrandId
+                             join color in context.Colors
+                             on c.ColorId equals color.ColorId
                              select new CarDetailDto
                              {
                                  CarId = c.CarId,
-                                 CarName = c.CarName,
                                  BrandName = b.BrandName,
                                  ColorName = color.ColorName,
                                  DailyPrice = c.DailyPrice,
-                                 ModelYear = c.ModelYear
+                                 Description = c.Descriptions,
+                                 ImagePath = (from a in context.CarImages where a.CarId == c.CarId select a.ImagePath).FirstOrDefault()
                              };
-
                 return result.ToList();
             }
         }
@@ -40,7 +40,7 @@ namespace DataAccess.Concrete.EntityFramewotk
             using (ReCapProjectDatabaseContext context = new ReCapProjectDatabaseContext())
             {
 
-         
+
                 var result = from c in context.Cars
                              join b in context.Brands on c.BrandId equals b.BrandId
                              join co in context.Colors on c.ColorId equals co.ColorId
@@ -52,8 +52,7 @@ namespace DataAccess.Concrete.EntityFramewotk
                                  DailyPrice = c.DailyPrice,
                                  Description = c.Descriptions,
                                  BrandId = c.BrandId,
-                                 BrandName= b.BrandName,
-                                 Name = b.BrandName,
+                                 BrandName = b.BrandName,
                                  ColorId = c.ColorId,
                                  ColorName = co.ColorName
                              };

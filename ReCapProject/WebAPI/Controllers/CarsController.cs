@@ -82,9 +82,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getAllWithDetail")]
-        public IActionResult GetAllWithDetail(int carId)
+        public IActionResult GetAllWithDetail()
         {
-            var result = _carService.GetAllWithDetail(carId);
+            var result = _carService.GetAllWithDetail();
             if (result.Success)
             {
                 return Ok(result);

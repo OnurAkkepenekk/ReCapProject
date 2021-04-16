@@ -6,8 +6,10 @@ using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Business.Concrete
@@ -29,6 +31,18 @@ namespace Business.Concrete
             return new SuccessDataResult<Rental>(Messages.RentalAdded);
         }
 
+        public IResult CheckAvailability(DateTime rentDate, int carId)
+        {
+            if (_rentalDal.CheckAvailability(rentDate, carId).Success)
+            {
+                return new SuccessResult();
+            }
+            else
+            {
+                return new ErrorResult();
+            }
+        }
+
         public IResult Delete(Rental rental)
         {
             _rentalDal.Delete(rental);
@@ -43,6 +57,13 @@ namespace Business.Concrete
         public IDataResult<Rental> GetById(int id)
         {
             return new SuccessDataResult<Rental>(_rentalDal.Get(u => u.RentalId == id));
+        }
+
+        public IDataResult<List<RentalDetailDto>> RentalDetails(Expression<Func<Rental, bool>> filter = null)
+        {
+            return filter == null
+                ? new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(), Messages.RentalDetails)
+                : new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(filter), Messages.RentalDetails);
         }
 
         public IResult Update(Rental rental)
