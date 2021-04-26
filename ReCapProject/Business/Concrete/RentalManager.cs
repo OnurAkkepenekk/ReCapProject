@@ -35,11 +35,11 @@ namespace Business.Concrete
         {
             if (_rentalDal.CheckAvailability(rentDate, carId).Success)
             {
-                return new SuccessResult();
+                return new SuccessDataResult<Rental>();
             }
             else
             {
-                return new ErrorResult();
+                return new ErrorDataResult<Rental>();
             }
         }
 
