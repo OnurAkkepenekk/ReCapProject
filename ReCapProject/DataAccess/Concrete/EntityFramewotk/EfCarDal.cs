@@ -54,7 +54,8 @@ namespace DataAccess.Concrete.EntityFramewotk
                                  BrandId = c.BrandId,
                                  BrandName = b.BrandName,
                                  ColorId = c.ColorId,
-                                 ColorName = co.ColorName
+                                 ColorName = co.ColorName,
+                                 Name = c.CarName
                              };
 
                 return filter == null ? result.ToList() : result.Where(filter).ToList();
