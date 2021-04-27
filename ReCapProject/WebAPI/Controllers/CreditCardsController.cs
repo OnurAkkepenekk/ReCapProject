@@ -20,7 +20,7 @@ namespace WebAPI.Controllers
             _cardService = cardService;
         }
 
-        [HttpGet("getallbycustomerid")]
+        [HttpGet("GetCreditCardByCustomerId")]
         public IActionResult GetCreditCardByCustomerId(int customerId)
         {
             var result = _cardService.Get(customerId);
