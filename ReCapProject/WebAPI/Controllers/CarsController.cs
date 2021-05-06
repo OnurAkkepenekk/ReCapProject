@@ -23,7 +23,7 @@ namespace WebAPI.Controllers
         //Get
         [HttpGet("GetAll")]
         public IActionResult GetAll()
-         {
+        {
             var result = _carService.GetAll();
             if (result.Success)
                 return Ok(result);
@@ -60,9 +60,9 @@ namespace WebAPI.Controllers
                 return BadRequest(result);
         }
         [HttpGet("GetCarDetailsByColorAndBrand")]
-        public IActionResult GetCarDetailsByColorAndBrand(int brandId,int colorId)
+        public IActionResult GetCarDetailsByColorAndBrand(int brandId, int colorId)
         {
-            var result = _carService.GetCarDetailsByColorAndBrand(brandId,colorId);
+            var result = _carService.GetCarDetailsByColorAndBrand(brandId, colorId);
             if (result.Success)
                 return Ok(result);
             else
@@ -97,7 +97,8 @@ namespace WebAPI.Controllers
         [HttpPost("Add")]
         public IActionResult Add(Car car)
         {
-
+            car.ColorId = int.Parse(car.ColorId.ToString());
+            car.BrandId = int.Parse(car.BrandId.ToString());
             var result = _carService.Add(car);
             if (result.Success)
                 return Ok(result);
