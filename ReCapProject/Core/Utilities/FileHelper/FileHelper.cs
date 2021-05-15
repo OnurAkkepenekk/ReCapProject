@@ -12,7 +12,7 @@ namespace Core.Utilities.Helpers
         static string path = System.IO.Directory.GetCurrentDirectory() + @"\wwwroot\Images";
         public static IDataResult<String> AddAsync(IFormFile file)
         {
-            if (file.Length > 0)
+            if (file != null && file.Length > 0)
             {
                 string filePath = NewPath(file).newPath;
                 string imagePath = NewPath(file).Path2;
@@ -77,6 +77,15 @@ namespace Core.Utilities.Helpers
             string result = $@"{path}\{creatingUniqueFilename}";
 
             return (path, $"{creatingUniqueFilename}");
+        }
+
+        public IResult CheckFileExists(IFormFile file)
+        {
+            if (file != null && file.Length > 0)
+            {
+                return new SuccessResult();
+            }
+            return new ErrorResult("No File.");
         }
     }
 }
