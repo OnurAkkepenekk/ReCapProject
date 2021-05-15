@@ -59,6 +59,7 @@ namespace WebAPI.Controllers
             else
                 return BadRequest(result);
         }
+
         [HttpGet("GetCarDetailsByColorAndBrand")]
         public IActionResult GetCarDetailsByColorAndBrand(int brandId, int colorId)
         {
@@ -92,7 +93,17 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+        [HttpGet("getCarWithDetail")]
+        public IActionResult GetCarWithDetail(int carId)
+        {
+            var result = _carService.GetCarDetailsByCarId(carId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
 
+            return BadRequest(result);
+        }
         //Post
         [HttpPost("Add")]
         public IActionResult Add(Car car)
