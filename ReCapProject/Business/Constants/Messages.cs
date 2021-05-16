@@ -42,13 +42,13 @@ namespace Business.Constants
         public static string ListCarImage = "Resim listesi";
         public static string CarImageLimitExceeded = "En fazla 5 resim upload edebilirsin.";
         public static string AuthorizationDenied = "Yetkiniz yok";
-        internal static string UserRegistered;
-        internal static User PasswordError;
-        internal static string SuccessfulLogin;
-        internal static string UserAlreadyExists;
-        internal static string AccessTokenCreated;
-        internal static string CarImageUpdated;
-        internal static string RentalDetails;
+        public static string UserRegistered ="Kullanıcı kayıt işlemi tamamlandı.";
+        public static string PasswordError ="Şifre yanlış";
+        public static string SuccessfulLogin = "Giriş başarılı";
+        public static string UserAlreadyExists;
+        public static string AccessTokenCreated ="Token oluşturuldu";
+        public static string CarImageUpdated;
+        public static string RentalDetails;
 
         public static User UserNotFound { get; internal set; }
     }
